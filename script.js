@@ -36,12 +36,32 @@ var RecipeApp = function () {
 
     var createIngredients = function(){
         //add code
+        for (var i=0; i<recipes.length; i++){
+            var ingr = {
+                name: text
+            }
+            recipes[i].ingredients.push(ingr)
+        }
     };
 
     var _getIngredients = function(recipe){
         var recipesHTML = "";
-
         //add code
+        if(ingredients.length > 0){
+            for (let i=0; i<ingredients.length; i++)
+            {
+                recipesHTML += '<li>'+ingredients[i].name+'</li>'
+            }
+            
+
+
+
+
+
+
+
+
+
         return recipesHTML;
     };
 
@@ -90,11 +110,12 @@ var app = RecipeApp();
 //add a recipe
 $('.add-recipe').on('click', function(){
     //collect input text
+    var text = $('#basic-url').val();
     var name = $('#recipe-name').val();
     var image = $('#recipe-image').val();
 
     //add recipe to array and render
     app.createRecipe(name, image);
+    app.createIngredients(text);    
     app.renderRecipes();
 });
-
